@@ -46,7 +46,7 @@ const App = () => {
     setErrorMessage(null)
     try{
       let {status} = await Location.requestForegroundPermissionsAsync()
-      alert('Entered try '+status)
+      // alert('Entered try '+status)
       if(status !== 'granted'){
         setErrorMessage('Allow Location Access to enter the app')
         alert('Returning')
@@ -54,10 +54,10 @@ const App = () => {
       }
       const location = await Location.getCurrentPositionAsync()
       const {latitude, longitude} = location.coords
-      alert(`Your Current Location is: ${latitude}, ${longitude}`)
+      // alert(`Your Current Location is: ${latitude}, ${longitude}`)
       var data = `${latitude} , ${longitude}`
       locc = data.replace( /^\D+/g, '');
-      alert(locc);
+      // alert(locc);
     }
     catch(error){
         setErrorMessage(error.message);

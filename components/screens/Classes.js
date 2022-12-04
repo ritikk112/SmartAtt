@@ -1,45 +1,36 @@
 import * as React from "react";
-import { View, ScrollView, Image, StyleSheet } from "react-native";
-import { Text } from "react-native-paper";
-import Class1 from "../../assets/class1.png";
-import Class2 from "../../assets/class2.png";
-import ClassCard from "../ClassCard";
+import { ImageBackground, Text, View, ScrollView, Image, StyleSheet, useState } from "react-native";
+import { FontAwesome5 } from "@expo/vector-icons";
+import {Table, Row, Rows} from 'react-native-table-component';
+import {Picker} from '@react-native-picker/picker';
 
-const Classes = () => {
-  const classBackgrounds = [Class1, Class2, Class1, Class2],
-    classDescription = [
-      "Culpa est officia elit velit duis officia nostrud ex ipsum et est ut.",
-      "Amet culpa reprehenderit aliqua tempor dolore culpa veniam culpa.",
-      "Laborum anim fugiat Lorem labore in consequat aliqua qui consequat labore.",
-      "Laborum ex reprehenderit velit ea dolore cillum cillum cupidatat.",
-    ],
-    classTitle=[
-        'Intro to programming',
-        'IOT: Real World Exp',
-        'Machine Learning',
-        'Maths in AI'
-    ];
-
-  console.log(classBackgrounds.length);
-  return (
-    <ScrollView style={styles.container}>
-      {classBackgrounds.map((classBackground, index) => {
-        return (
-          <ClassCard
-            key={index}
-            title={classTitle[index]}
-            para={classDescription[index]}
-            bgSource={classBackground}
-          />
-        );
-      })}
-      <Text>Class ends here.....</Text>
-    </ScrollView>
-  );
+export default class Accounts extends React.Component{
+  render(){
+    const first = ['\t\t\t\t\t\t\t\t\tEMFT', '\t\t\t\t\t\t\t\t\t10 - 11']
+    const second = ['\t\t\t\t\t\t\t\t\t\tITA', '\t\t\t\t\t\t\t\t\t11 - 12']
+    const third = ['\t\t\t\t\Sociology of Media', '\t\t\t\t\t\t\t\t\t 12 - 1']
+    const fourth = ['\t\t\t\t\t\t\t\t\tLaser', '\t\t\t\t\t\t\t\t\t  1 - 2']
+    const fifth = ['\t\t\t\t\t\t\t\tIOT Lab', '\t\t\t\t\t\t\t\t\t  3 - 5']
+    return(
+      <View style = {{ flex: 4, flexDirection: 'column', padding: 20, justifyContent: 'center'}}>
+        {/* <ImageBackground source={image} resizeMode="cover" style={{flex: 1, justifyContent: 'center'}}> */}
+        <Picker style = {{padding: 2}}>
+          <Picker.Item label="Monday" value="day" />
+          <Picker.Item label="Tuesday" value="day" />
+          <Picker.Item label="Wednesday" value="day" />
+          <Picker.Item label="Thrusday" value="day" />
+          <Picker.Item label="Friday" value="day" />
+        </Picker>
+        <FontAwesome5 name = 'calendar-alt' size = {40} style = {{padding: 35, marginLeft: 120, marginTop: -10}} />
+        <Table style= {{justifyContent: 'center'}} borderStyle = {{borderRadius: 30, borderWidth: 2, borderColor: '#006D5B', flex: 20}}>
+          <Row data = {first} style = {{justifyContent: 'center'}}/>
+          <Row data = {second} />
+          <Row data = {third} />
+          <Row data = {fourth} />
+          <Row data = {fifth} />
+        </Table>
+        {/* </ImageBackground> */}
+      </View>
+    )
+  }
 };
-const styles = StyleSheet.create({
-    container: {
-        padding: 20
-    }
-})
-export default Classes;

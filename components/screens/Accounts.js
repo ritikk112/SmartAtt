@@ -1,168 +1,95 @@
 import { disableErrorHandling } from 'expo';
 import * as React from 'react'
-import { Button, Text, View, StyleSheet, Keyboard } from 'react-native';
+import {   TouchableOpacity, ImageBackground, Button, Text, View, StyleSheet, Keyboard, TextComponent, LogBox } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import { keyboardProps } from 'react-native-web/dist/cjs/modules/forwardedProps';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import QrScanner from '../QRScanner';
+import {Tempfunc} from './Accounts';
+import Location from './Location';
+import HomeScreen from './Home';
+import { AntDesign } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 
-global.variabble = 0;
+const image = { uri: "https://i.pinimg.com/736x/77/bf/47/77bf47ef053709ad8c48d443c193af62.jpg" };
 
-export const Tempfunc2=()=>
-{
-    alert('Function2 called');
-}
+global.Name = 'Ritik Shukla';
 
-export function func2(){
-    // Num = Num+1;
-    alert('Value is '+variabble);
+const Stack = createNativeStackNavigator();
 
-}
-
-export default class Accounts extends React.Component {
+export default class Accounts extends React.Component{
     constructor(props)
     {
-        super(props);
-        this.state={RollNo:'',StudentName:'',Course:'',Findinga:'',Findingb:''};
+      super(props);
+      this.state={
+        Entity:'',
+        Name2:Name,
+    };
     }
-    Tempfunc3=()=>
-    {
-        alert('Function3 called');
-        variabble = variabble+1;
-    }
-    FindRecord=()=>
-    {
-        var Findinga = this.state.Findinga;
-        var Findingb = this.state.Findingb;
+    render(){
+        return(
+            <View style={styles.container}>
+                <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+                    <View style = {styles.container}>
+                        <FontAwesome5 name='user-alt' size={45} style = {{marginLeft: 50, marginTop: 80, marginBottom: 30}}/>
+                        <Text style = {{fontSize : 18,marginTop: 105, marginLeft: 10, color: 'black'}}>
+                            {this.state.Name2}
+                        </Text>
+                    </View>
+                    <View style = {styles.buttons}>
+                        <View style = {{marginBottom: 1}}>
+                            <Button title = "Edit Profile"
+                                color={'#006D5B'}
+                            />
+                        </View>
+                        <View style = {{marginBottom: 2}}>
+                            <Button title = "Delete Account"
+                            color={'#1EA1A1'}
+                            />
+                        </View>
+                        <View style = {{marginBottom: 10}}>
+                            <Button title = "Show Details"
+                                color={'#006D5B'}
+                            />
+                        </View>
+                    </View>
+                    <View style = {styles.buttons}>
+                        <View style = {{marginTop: 50}}>
+                            <Button title = "Log Out"
+                                color={'#FF0000'}
+                            />
+                        </View>
+                    </View>
+                </ImageBackground>
+            </View>
+        );
+    }    
 
-        if(Findinga.length==0 || Findingb.length==0){
-            alert("Required Field is missing");
-        }
-        else{
-            var InsertAPIURL = "http://10.0.2.2:80/api/srch.php";
-            
-            var headers={
-                'Accept':'*/*',
-                'Content-Type':'application/json'
-            };
-            
-            var Data={
-                Findinga:Findinga,
-                Findingb:Findingb
-            };
-            fetch(InsertAPIURL,
-                {
-                    method:'POST',
-                    headers:headers, 
-                    body: JSON.stringify(Data)
-                }
-                )
-                .then((response)=>response.json())
-                .then((response)=>
-                {
-                    alert("No Error "+response.Message);
-                })
-                .catch((error)=>
-                {
-                    alert("Error: "+error);
-                })
-        }
-        Keyboard.dismiss();
-    }
-    InsertRecord=()=>
-    {
-        var RollNo = this.state.RollNo;
-        var StudentName = this.state.StudentName;
-        var Course = this.state.Course;
-
-        if(RollNo.length==0 || StudentName.length==0 || Course.length==0){
-            alert("Required Field is Missing");
-        }
-        else{
-            var InserAPIURL = "http://10.0.2.2:80/api/insert.php";
-            
-            var headers={
-                'Accept':'application/json',
-                'Content-Type':'application.json'
-            };
-            
-            var Data={
-                RollNoo:RollNo,
-                StudentNamee:StudentName,
-                Coursee:Course
-            };
-            fetch(InserAPIURL,
-                {
-                    method:'POST',
-                    headers:headers, 
-                    body: JSON.stringify(Data)
-                }
-                )
-                .then((response)=>response.json())
-                .then((response)=>
-                {
-                    alert(response[0].Message);
-                })
-                .catch((error)=>
-                {
-                    alert("Error: "+error);
-                })
-        }
-        Keyboard.dismiss();
-    }
-    render (){
-    return (
-        <View style = {styles.ViewStyle}>
-            <TextInput 
-                placeholder={"Search"}
-                style={StyleSheet.txtStyle}
-                onChangeText={Findinga=>this.setState({Findinga})}
-            />
-            <TextInput placeholder={"Name"}
-                style={StyleSheet.txtStyle}
-                onChangeText={Findingb=>this.setState({Findingb})}
-            />
-            <Button 
-                title={"Find Record"}
-                onPress={this.FindRecord}
-            />
-            <TextInput 
-                placeholder={"Enrollment Number"}
-                style={StyleSheet.txtStyle}
-                onChangeText={RollNo=>this.setState({RollNo})}
-            />
-            <TextInput 
-                placeholder={"Name"}
-                style={StyleSheet.txtStyle}
-                onChangeText={StudentName=>this.setState({StudentName})}
-            />
-            <TextInput 
-                placeholder={"Course"}
-                style={StyleSheet.txtStyle}
-                onChangeText={Course=>this.setState({Course})}
-            />
-            <Button
-                title={"Save"}
-                onPress={this.InsertRecord}
-            />
-            <Button 
-                title={"PressMe"}
-                onPress={this.Tempfunc3}
-            />
-        </View>
-    )
-    }
 };
-const styles=StyleSheet.create({
-    ViewStyle:
-    {
-        flex:1,
-        padding:20,
-        marginTop:10
-    },
 
-    txtStyle:
-    {
-        borderBottomWidth:1,
-        borderBottomColor:'red',
-        marginBottom:20
+const styles = StyleSheet.create({
+    buttons: {
+        flex: 10,
+        justifyContent: 'flex-start',
+        margin: 30,
+        marginTop: 150,
+    },
+    container: {
+      flex: 1,
+      flexDirection: 'row', 
+      flexWrap: "wrap"
+    },
+    image: {
+      flex: 1,
+      justifyContent: "center"
+    },
+    text: {
+      color: "white",
+      fontSize: 42,
+      lineHeight: 84,
+      fontWeight: "bold",
+      textAlign: "center",
+      backgroundColor: "#000000c0"
     }
-})
+  });
+  
