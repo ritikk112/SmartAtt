@@ -13,7 +13,7 @@ export default class ForFaculty extends React.Component{
   {
       // alert('Entered FindRec');
       var Findinga = 'temping';
-      var InsertAPIURL = "http://10.0.2.2:80/api/tabling2.php";
+      var InsertAPIURL = "https://23b3-122-161-53-237.in.ngrok.io/api/tabling2.php";
       
       var headers={
           'Accept':'*/*',
@@ -44,7 +44,7 @@ export default class ForFaculty extends React.Component{
     DeleteRecord=()=>
     {
       // alert('Entered DelRec');
-      var InsertAPIURL = "http://10.0.2.2:80/api/tabling.php";
+      var InsertAPIURL = "https://23b3-122-161-53-237.in.ngrok.io/api/tabling.php";
       
       var headers={
           'Accept':'*/*',

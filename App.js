@@ -15,8 +15,8 @@ import ForStudents from './components/screens/ForStudents';
 import ForFaculty from './components/screens/ForFaculty';
 
 global.locc = ''
-global.name = ''
-global.rollno = ''
+global.name = 'AkshatSrivastava'
+global.rollno = '12345'
 
 function abs(a){
   if(a < 0){
@@ -35,8 +35,35 @@ export function updating(rono, nme){
 export function comp(data){
   const ara1 = data.split(",");
   const ara2 = locc.split(",");
-  if(abs(ara1[0]-ara2[0]) < 0.0000200 && abs(ara1[1]-ara2[1]) < 0.0000200){
+  if(abs(ara1[0]-ara2[0]) < 0.000200 && abs(ara1[1]-ara2[1]) < 0.000200){
     alert('Same')
+    var InsertAPIURL = "https://23b3-122-161-53-237.in.ngrok.io/api/download.php";
+    
+    var headers={
+        'Accept':'*/*',
+        'Content-Type':'application/json'
+    };
+    
+    var Data={
+      RollNoo: '122',
+      StudentNamee:'name'
+    };
+    fetch(InsertAPIURL,
+      {
+        method:'POST',
+        headers:headers, 
+        body: JSON.stringify(Data)
+      }
+      )
+    .then((response)=>response.json())
+    .then((response)=>
+    {
+      alert("Successful! "+response.Message);
+    })
+    .catch((error)=>
+    {
+      alert("Error: "+error);
+    })
   }
   else{
     alert('NotSame '+' data is '+data+ ' locc is '+locc)
