@@ -11,8 +11,12 @@ import QRScanner from './components/QRScanner'
 // import Location from './components/screens/Location'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import ForStudents from './components/screens/ForStudents';
+import ForFaculty from './components/screens/ForFaculty';
 
 global.locc = ''
+global.name = ''
+global.rollno = ''
 
 function abs(a){
   if(a < 0){
@@ -21,6 +25,12 @@ function abs(a){
   }
   return a;
 }
+export function updating(rono, nme){
+  global.name = mne;
+  global.rollno = rono;
+  alert(this.name+this.rollno);
+}
+
 
 export function comp(data){
   const ara1 = data.split(",");
@@ -68,7 +78,7 @@ const App = () => {
     { key: 'home', title: 'Home', focusedIcon: 'home', unfocusedIcon: 'home-outline'},
     { key: 'classes', title: 'Classes', focusedIcon: 'account-group', unfocusedIcon: 'account-group-outline' },
     { key: 'account', title: 'Account', focusedIcon: 'account', unfocusedIcon: 'account-outline' },
-    // { key: 'loc', title: 'Location', focusedIcon: 'home', unfocusedIcon: 'home-outline'}
+    { key: 'tempo', title: 'Location', focusedIcon: 'home', unfocusedIcon: 'home-outline'}
   ]);
 
   const navigationRef = React.createRef();
@@ -79,6 +89,7 @@ const App = () => {
     account: Account,
     qr: QRScanner,
     // loc:Location
+    tempo:ForFaculty
   });
 
   return (
@@ -94,6 +105,7 @@ const App = () => {
       } />
       <Stack.Screen name="QrScanner" component={QRScanner} />
       {/* <Stack.Screen name="Location" component={Location} /> */}
+      
       </Stack.Navigator>
     </NavigationContainer>
   );

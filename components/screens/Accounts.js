@@ -1,14 +1,11 @@
 import { disableErrorHandling } from 'expo';
 import * as React from 'react'
-import {   TouchableOpacity, ImageBackground, Button, Text, View, StyleSheet, Keyboard, TextComponent, LogBox } from 'react-native';
-import { TextInput } from 'react-native-paper';
+import {ImageBackground, Button, Text, View, StyleSheet } from 'react-native';
 import { keyboardProps } from 'react-native-web/dist/cjs/modules/forwardedProps';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import QrScanner from '../QRScanner';
-import {Tempfunc} from './Accounts';
 import Location from './Location';
 import HomeScreen from './Home';
-import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 const image = { uri: "https://i.pinimg.com/736x/77/bf/47/77bf47ef053709ad8c48d443c193af62.jpg" };

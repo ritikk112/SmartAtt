@@ -3,19 +3,8 @@ import { Text, View, StyleSheet, Button } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import * as funn from '../App.js';
 
-// global.xparam = 0
-// global.yparam = 0
-
 global.thenum = 0
 
-// export function comp(coords){
-//   if(coords === thenum){
-//     alert('Found');
-//   }
-//   else{
-//     alert('NotFound');
-//   }
-// }
 
 export default function App({navigation}) {
   const [hasPermission, setHasPermission] = useState(null);

@@ -1,0 +1,2 @@
+-- Create User Table
+CREATE TABLE `Wd9AlN172h`.`users` ( `email` VARCHAR(128) NOT NULL , `password` VARCHAR(256) NOT NULL , `first_name` VARCHAR(128) NOT NULL , `last_name` VARCHAR(128) NOT NULL , `rollnumber` VARCHAR(256) NOT NULL , `course` VARCHAR(128) NOT NULL , PRIMARY KEY (`email`), UNIQUE (`rollnumber`)) ENGINE = InnoDB;
