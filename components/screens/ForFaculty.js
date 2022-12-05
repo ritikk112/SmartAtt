@@ -1,6 +1,8 @@
 import * as React from "react";
 import { Button, ImageBackground, Text, View, ScrollView, Image, StyleSheet, useState } from "react-native";
 import {Picker} from '@react-native-picker/picker';
+// import XTable from '../Table';
+import { Text as XText } from 'react-native-paper';
 
 const image = { uri: "https://i.pinimg.com/736x/77/bf/47/77bf47ef053709ad8c48d443c193af62.jpg" };
 
@@ -76,6 +78,7 @@ export default class ForFaculty extends React.Component{
       return(
         <View style = {{ flex: 4, flexDirection: 'column', padding: 20}}>
         <ImageBackground source={image} resizeMode="cover" style={{flex: 1}}>
+        <XText variant="headlineMedium" style={{textAlign: 'center', marginBottom: 20}}>ForFaculty</XText>
         <Picker style = {{padding: 2, marginTop: 30}}>
           <Picker.Item label="Select Class" value="day" />
         </Picker>
