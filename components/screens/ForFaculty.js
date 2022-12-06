@@ -3,6 +3,7 @@ import { Button, ImageBackground, Text, View, ScrollView, Image, StyleSheet, use
 import {Picker} from '@react-native-picker/picker';
 // import XTable from '../Table';
 import { Text as XText } from 'react-native-paper';
+import { flagging, flagging2 } from "../../App";
 
 const image = { uri: "https://i.pinimg.com/736x/77/bf/47/77bf47ef053709ad8c48d443c193af62.jpg" };
 
@@ -14,8 +15,10 @@ export default class ForFaculty extends React.Component{
   FindRecord=()=>
   {
       // alert('Entered FindRec');
+      // this.flagging;
+      flagging()
       var Findinga = 'temping';
-      var InsertAPIURL = "https://23b3-122-161-53-237.in.ngrok.io/api/tabling2.php";
+      var InsertAPIURL = "http://192.168.170.59/api/tabling2.php";
       
       var headers={
           'Accept':'*/*',
@@ -45,8 +48,10 @@ export default class ForFaculty extends React.Component{
     }
     DeleteRecord=()=>
     {
+      // this.flagging2;
+      flagging2();
       // alert('Entered DelRec');
-      var InsertAPIURL = "https://23b3-122-161-53-237.in.ngrok.io/api/tabling.php";
+      var InsertAPIURL = "http://192.168.170.59/api/tabling.php";
       
       var headers={
           'Accept':'*/*',
