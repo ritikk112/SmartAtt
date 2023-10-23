@@ -51,7 +51,11 @@ export default class ForFaculty extends React.Component{
       // this.flagging2;
       flagging2();
       // alert('Entered DelRec');
+<<<<<<< HEAD
       var InsertAPIURL = "http://192.168.170.59/api/exporting.php";
+=======
+      var InsertAPIURL = "http://192.168.170.59/api/tabling.php";
+>>>>>>> refs/remotes/origin/main
       
       var headers={
           'Accept':'*/*',
