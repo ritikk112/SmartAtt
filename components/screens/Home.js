@@ -13,7 +13,7 @@ import XTable from '../Table';
 import { Text as XText } from 'react-native-paper';
 
 
-const image = { uri: "http://10.0.2.2:80/BGImage/bgimg.jpg" };
+const image = { uri: "http://192.168.170.59/BGImage/bgimg.jpg" };
 
 
 function HomeScreen({ navigation }) {

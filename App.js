@@ -17,6 +17,16 @@ import ForFaculty from './components/screens/ForFaculty';
 global.locc = ''
 global.name = 'AkshatSrivastava'
 global.rollno = '12345'
+global.flag = 1
+
+export function flagging(){
+  flag = 0;
+  // alert('entered flagging'+flag);
+}
+export function flagging2(){
+  flag = 1;
+  // alert('entered flagging2'+flag);
+}
 
 function abs(a){
   if(a < 0){
@@ -35,9 +45,9 @@ export function updating(rono, nme){
 export function comp(data){
   const ara1 = data.split(",");
   const ara2 = locc.split(",");
-  if(abs(ara1[0]-ara2[0]) < 0.000200 && abs(ara1[1]-ara2[1]) < 0.000200){
+  if(abs(ara1[0]-ara2[0]) < 1.000200 && abs(ara1[1]-ara2[1]) < 1.000200 && flag == 0){
     alert('Same')
-    var InsertAPIURL = "https://23b3-122-161-53-237.in.ngrok.io/api/download.php";
+    var InsertAPIURL = "http://192.168.170.59/api/inserting.php";
     
     var headers={
         'Accept':'*/*',
@@ -58,15 +68,19 @@ export function comp(data){
     .then((response)=>response.json())
     .then((response)=>
     {
-      alert("Successful! "+response.Message);
+      alert('Marked Present');
     })
     .catch((error)=>
     {
       alert("Error: "+error);
     })
   }
+  else if(flag == 1){
+    alert('QR No Longer Accepting responses!')
+  }
   else{
-    alert('NotSame '+' data is '+data+ ' locc is '+locc)
+    alert('Not Marked')
+    // alert('NotSame '+' data is '+data+ ' locc is '+locc)
   }
 }
 
@@ -105,7 +119,7 @@ const App = () => {
     { key: 'home', title: 'Home', focusedIcon: 'home', unfocusedIcon: 'home-outline'},
     { key: 'classes', title: 'Classes', focusedIcon: 'account-group', unfocusedIcon: 'account-group-outline' },
     { key: 'account', title: 'Account', focusedIcon: 'account', unfocusedIcon: 'account-outline' },
-    { key: 'tempo', title: 'Location', focusedIcon: 'home', unfocusedIcon: 'home-outline'}
+    { key: 'tempo', title: 'Faculty', focusedIcon: 'account-tie', unfocusedIcon: 'account-tie-outline'}
   ]);
 
   const navigationRef = React.createRef();
